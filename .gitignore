@@ -1,0 +1,10 @@
+CleanArch.App/bin/
+CleanArch.App/obj/
+CleanArch.Domain/bin/
+CleanArch.Domain/obj/
+CleanArch.Infra/bin/
+CleanArch.Infra/obj/
+CleanArch.Presentation/bin/
+CleanArch.Presentation/obj/
+CleanArch.Presentation/Properties/
+.vscode
