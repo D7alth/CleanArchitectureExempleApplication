@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.App.UseCases.CreateUser;
+using CleanArch.App.UseCases.DeleteUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -29,8 +30,16 @@ namespace CleanArch.Presentation.Controllers
   
           var response = await _mediator.Send(request, cancellationToken);
           return Ok(response);
-
-
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<DeleteUserRequest>> Delete(Guid? id,
+                                                                    CancellationToken cancellationToken)
+        {
+          if(id is null) return BadRequest();
+          var deleteUserRequest = new DeleteUserRequest(id.Value);
+          var response = await _mediator.Send(deleteUserRequest, cancellationToken);
+          return Ok(response);
+       } 
     }
 }
